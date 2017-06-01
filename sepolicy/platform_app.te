@@ -1,0 +1,2 @@
+allow platform_app hcfs_data_file:dir getattr;
+allow platform_app hcfs_data_file:file { execute getattr open read };

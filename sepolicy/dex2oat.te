@@ -1,0 +1,8 @@
+allow dex2oat unlabeled:dir { getattr search };
+allow dex2oat unlabeled:file { getattr lock open write };
+allow dex2oat unlabeled:lnk_file read;
+
+allow dex2oat hcfs_data_file:dir getattr;
+allow dex2oat hcfs_data_file:file { getattr lock open read write };
+allow dex2oat hcfs_data_file:lnk_file read;
+

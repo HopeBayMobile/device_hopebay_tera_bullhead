@@ -1,0 +1,2 @@
+# Allow to permission on hcfs log file (adb pull, read)
+allow adbd hcfs_data_file:file { getattr read open };

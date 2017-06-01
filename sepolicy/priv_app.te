@@ -1,0 +1,9 @@
+allow priv_app hcfsapid:unix_stream_socket connectto;
+
+allow priv_app hcfs_data_file:dir getattr;
+allow priv_app hcfs_data_file:file { getattr open read };
+
+allow priv_app hcfs_data_file:dir search;
+
+allow priv_app storage_stub_file:dir getattr;
+

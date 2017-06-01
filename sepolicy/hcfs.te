@@ -1,0 +1,2 @@
+allow hcfs rootfs:filesystem associate;
+

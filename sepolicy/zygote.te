@@ -1,0 +1,17 @@
+set_prop(zygote, qemu_prop)
+allow zygote hcfs:filesystem { remount unmount };
+
+allow zygote qemu_device:chr_file { read write open };
+allow zygote fusenew:filesystem { unmount };
+
+allow zygote fusenew:dir { write search setattr create add_name mounton };
+
+allow zygote hcfs_data_file:dir { add_name getattr setattr write };
+allow zygote hcfs_data_file:dir { create open read remove_name };
+
+allow zygote hcfs_data_file:file { setattr unlink };
+allow zygote hcfs_data_file:file { create getattr lock open read write };
+
+allow zygote hcfs_data_file:lnk_file { getattr read };
+allow zygote hcfs_data_file:lnk_file create;
+

@@ -1,0 +1,3 @@
+allow appdomain fusenew:dir create_dir_perms;
+allow appdomain fusenew:file create_file_perms;
+

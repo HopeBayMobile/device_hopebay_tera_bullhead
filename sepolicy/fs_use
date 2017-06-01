@@ -1,0 +1,2 @@
+fs_use_xattr fusenew u:object_r:hcfs:s0;
+

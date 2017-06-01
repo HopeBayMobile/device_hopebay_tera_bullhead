@@ -1,0 +1,4 @@
+type hcfs_data_app, domain, domain_deprecated;
+type hcfs_data_app_exec, exec_type, file_type;
+
+init_daemon_domain(hcfs_data_app)

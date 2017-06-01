@@ -1,0 +1,5 @@
+allow system_app hcfs_data_file:dir getattr;
+allow system_app hcfs_data_file:file { getattr open read };
+
+allow system_app self:socket { write getopt create ioctl read };
+

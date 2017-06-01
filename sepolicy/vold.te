@@ -1,0 +1,12 @@
+allow vold fusenew:filesystem { relabelfrom };
+
+allow vold hcfs_socket:sock_file write;
+allow vold hcfsd:unix_stream_socket connectto;
+allow vold hcfsd_exec:file { execute execute_no_trans getattr open read };
+
+allow vold hcfs_data_file:dir { getattr setattr };
+
+allow vold device:dir add_name;
+allow vold device:file create;
+
+allow vold hcfs:filesystem { mount unmount remount };

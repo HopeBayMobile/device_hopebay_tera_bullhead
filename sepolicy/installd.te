@@ -1,0 +1,10 @@
+allow installd hcfs_data_file:dir { remove_name write };
+allow installd hcfs_data_file:dir { add_name create getattr relabelfrom setattr };
+
+allow installd hcfs_data_file:file unlink;
+allow installd hcfs_data_file:file { create lock open read setattr write };
+
+allow installd hcfs_data_file:dir { read search };
+
+allow installd terafonn_data_file:dir { write search setattr relabelto getattr add_name };
+allow installd terafonn_data_file:lnk_file create;

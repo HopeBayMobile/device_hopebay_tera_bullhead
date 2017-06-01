@@ -1,0 +1,70 @@
+#============= HCFS API DAEMON ==============
+type hcfsapid, domain, mlstrustedsubject;
+type hcfsapid_exec, exec_type, file_type;
+# Domain traistion from init to hcfsapid
+init_daemon_domain(hcfsapid)
+# Allow permission to create hcfsapid_socket file in com.hopebaytech.hcfsmgmt folder
+allow hcfsapid terafonn_data_file:dir rw_dir_perms;
+allow hcfsapid terafonn_data_file:sock_file create_file_perms;
+allow hcfsapid terafonn_data_file:file rw_file_perms;
+# Allow connection from hcfsapid domain via socket to hcfsd domain
+allow hcfsapid hcfs_socket:sock_file rw_file_perms;
+allow hcfsapid hcfsd:unix_stream_socket connectto;
+allow hcfsapid device:dir rw_dir_perms;
+#allow hcfsapid hcfs_socket:sock_file create_file_perms;
+# Allow permission to read/write hcfs.conf
+file_type_auto_trans(hcfsapid, system_data_file, hcfs_data_file)
+allow hcfsapid hcfs_data_file:dir create_file_perms;
+allow hcfsapid hcfs_data_file:file create_file_perms;
+allow hcfsapid system_data_file:dir remove_name;
+allow hcfsapid app_data_file:dir open;
+# Allow permissions on internal mountpoint
+#define(`hcfs_internal_dataset', `{ app_data_file system_app_data_file system_data_file radio_data_file bluetooth_data_file shell_data_file location_app_data_file qsee_svc_app_data_file qtitetherservice_app_data_file apk_data_file apk_tmp_file }')
+define(`hcfs_internal_dataset', `{ app_data_file system_data_file radio_data_file bluetooth_data_file shell_data_file apk_data_file apk_tmp_file }')
+allow hcfsapid hcfs_internal_dataset:dir { search getattr read open };
+allow hcfsapid hcfs_internal_dataset:file { getattr };
+# Allow permisssions on externel mountpoint
+allow hcfsapid hcfs:dir { read write create add_name open search getattr };
+allow hcfsapid hcfs:file { create getattr };
+allow hcfsapid shell_data_file:dir { write remove_name search add_name };
+allow hcfsapid shell_data_file:file { write getattr read create unlink open };
+allow hcfsapid self:capability dac_override;
+allow hcfsapid dalvikcache_data_file:dir { open read };
+allow hcfsapid nfc_data_file:dir { read write open getattr };
+allow hcfsapid hcfs:file { open write };
+allow hcfsapid shell_exec:file { execute read open execute_no_trans };
+allow hcfsapid kernel:system syslog_read;
+
+allow hcfsapid platform_app_data_file:dir { write search add_name getattr remove_name };
+allow hcfsapid device:sock_file write;
+#allow hcfsapid init_shell:unix_stream_socket connectto;
+allow hcfsapid platform_app_data_file:sock_file { create unlink };
+
+allow hcfsapid fusenew:dir { read write create add_name open search getattr };
+allow hcfsapid fusenew:file { create getattr };
+allow hcfsapid system_data_file:file { unlink open };
+allow hcfsapid system_data_file:file { append read setattr };
+
+# To allow hcfsapid to delete created socket that was not labeled correctly
+allow hcfsapid unlabeled:sock_file unlink;
+allow hcfsapid unlabeled:dir search;
+
+allow hcfsapid rootfs:lnk_file getattr;
+
+allow hcfsapid system_app_data_file:dir getattr;
+allow hcfsapid system_data_file:lnk_file getattr;
+
+allow hcfsapid storage_file:dir getattr;
+allow hcfsapid storage_file:dir search;
+
+allow hcfsapid fuse:sock_file create;
+
+allow hcfsapid fuse:dir { add_name write };
+allow hcfsapid fuse:dir search;
+
+allow hcfsapid tmpfs:dir search;
+allow hcfsapid tmpfs:dir write;
+allow hcfsapid tmpfs:dir add_name;
+allow hcfsapid tmpfs:dir search;
+allow hcfsapid hcfsapid_tmpfs:file create;
+allow hcfsapid hcfsapid_tmpfs:file { append open };

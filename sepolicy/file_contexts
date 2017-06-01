@@ -1,0 +1,43 @@
+# goldfish
+/dev/block/mtdblock0         u:object_r:system_block_device:s0
+/dev/block/mtdblock1         u:object_r:userdata_block_device:s0
+/dev/block/mtdblock2         u:object_r:cache_block_device:s0
+
+# ranchu
+/dev/block/vda               u:object_r:system_block_device:s0
+/dev/block/vdb               u:object_r:cache_block_device:s0
+/dev/block/vdc               u:object_r:userdata_block_device:s0
+
+/dev/goldfish_pipe           u:object_r:qemu_device:s0
+/dev/goldfish_sync           u:object_r:qemu_device:s0
+/dev/qemu_.*                 u:object_r:qemu_device:s0
+/dev/socket/qemud            u:object_r:qemud_socket:s0
+/dev/ttyGF[0-9]*             u:object_r:serial_device:s0
+/dev/ttyS2                   u:object_r:console_device:s0
+/system/bin/qemud            u:object_r:qemud_exec:s0
+/sys/qemu_trace(/.*)?        u:object_r:sysfs_writable:s0
+/system/etc/init.goldfish.sh u:object_r:goldfish_setup_exec:s0
+/system/bin/qemu-props       u:object_r:qemu_props_exec:s0
+
+/init.hcfs.sh                u:object_r:hcfs_data_app_exec:s0
+
+###########################################
+# hcfsd
+/system/bin/hcfs            u:object_r:hcfsd_exec:s0
+/system/bin/HCFSvol         u:object_r:hcfsd_exec:s0
+/system/bin/hcfsconf        u:object_r:hcfsd_exec:s0
+/etc/hcfs.conf              u:object_r:hcfs_data_file:s0
+/data/hcfs.conf             u:object_r:hcfs_data_file:s0
+/data/hcfs_android_log      u:object_r:hcfs_data_file:s0
+/data/hcfsapid.log          u:object_r:hcfs_data_file:s0
+/data/testfile              u:object_r:hcfs_data_file:s0
+/data/hcfs(/.*)?            u:object_r:hcfs_data_file:s0
+/dev/shm/hcfs_reporter      u:object_r:hcfs_socket:s0
+/storage/emulated(/.*)?              u:object_r:hcfs:s0
+#############################
+# hcfsapid
+/system/bin/hcfsapid     u:object_r:hcfsapid_exec:s0
+/data/data/com.hopebaytech.hcfsmgmt/hcfsapid_sock u:object_r:hcfs_socket:s0
+/data/data/com.hopebaytech.hcfsmgmt/aaaa u:object_r:hcfs_socket:s0
+/dev/shm/aaaa u:object_r:hcfs_socket:s0
+/data/app/aaaa u:object_r:hcfs_socket:s0

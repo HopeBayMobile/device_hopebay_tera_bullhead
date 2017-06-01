@@ -1,0 +1,2 @@
+allow cache_file rootfs:filesystem associate;
+
