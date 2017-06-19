@@ -22,9 +22,10 @@ $(call inherit-product, device/lge/bullhead/aosp_bullhead.mk)
 BUILD_HCFS := true
 
 $(call inherit-product, vendor/tera/config/common.mk)
+BOARD_SEPOLICY_DIRS += device/hopebay/tera_bullhead/sepolicy
 
 PRODUCT_NAME := tera_bullhead
-PRODUCT_DEVICE := tera_bullhead
+#PRODUCT_DEVICE := tera_bullhead
 PRODUCT_MODEL := Tera on BullHead
 
 # not check vendor owner
