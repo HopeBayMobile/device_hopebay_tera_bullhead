@@ -35,7 +35,7 @@ allow hcfsd terafonn_data_file:dir search;
 allow hcfsd terafonn_data_file:file { write getattr setattr read lock open };
 allow hcfsd terafonn_app:unix_stream_socket connectto;
 # Allow permission to communicate with fuse_device
-allow hcfsd fuse_device:chr_file { read write open };
+allow hcfsd fuse_device:chr_file { read write open ioctl };
 #allow hcfsd init:fd use;
 # Allow permission to access shell_data_file files/dirs
 allow hcfsd shell_data_file:dir { write remove_name search add_name };
