@@ -8,7 +8,7 @@ binder_service(terafonn_app)
 # Allow connection and send from terafonn_app domain via socket to other domain
 allow terafonn_app hcfsapid:unix_stream_socket connectto;
 allow terafonn_app terafonn_data_file:dir create_dir_perms;
-allow terafonn_app terafonn_data_file:file create_file_perms;
+allow terafonn_app terafonn_data_file:file { rwx_file_perms };
 allow terafonn_app terafonn_data_file:sock_file write;
 # Allow permissions to fetch app info
 allow terafonn_app apk_tmp_file:dir { search getattr };

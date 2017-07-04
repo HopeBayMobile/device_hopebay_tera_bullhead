@@ -54,17 +54,16 @@ allow hcfsapid rootfs:lnk_file getattr;
 allow hcfsapid system_app_data_file:dir getattr;
 allow hcfsapid system_data_file:lnk_file getattr;
 
-allow hcfsapid storage_file:dir getattr;
-allow hcfsapid storage_file:dir search;
+allow hcfsapid tmpfs:dir { search write add_name search };
 
+allow hcfsapid hcfsapid_tmpfs:file { create append open };
+
+allow hcfsapid apk_data_file:dir { add_name remove_name setattr write };
+allow hcfsapid apk_data_file:file { create open read rename setattr write };
+
+allow hcfsapid fuse:dir { add_name write search };
+allow hcfsapid fuse:file getattr;
 allow hcfsapid fuse:sock_file create;
 
-allow hcfsapid fuse:dir { add_name write };
-allow hcfsapid fuse:dir search;
-
-allow hcfsapid tmpfs:dir search;
-allow hcfsapid tmpfs:dir write;
-allow hcfsapid tmpfs:dir add_name;
-allow hcfsapid tmpfs:dir search;
-allow hcfsapid hcfsapid_tmpfs:file create;
-allow hcfsapid hcfsapid_tmpfs:file { append open };
+allow hcfsapid storage_file:dir { getattr search };
+allow hcfsapid storage_file:lnk_file { read getattr };

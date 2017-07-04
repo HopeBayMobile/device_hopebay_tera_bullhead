@@ -10,3 +10,5 @@ allow vold device:dir add_name;
 allow vold device:file create;
 
 allow vold hcfs:filesystem { mount unmount remount };
+
+allow vold device:sock_file write;

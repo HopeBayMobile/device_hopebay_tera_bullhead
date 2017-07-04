@@ -8,3 +8,5 @@ allow installd hcfs_data_file:dir { read search };
 
 allow installd terafonn_data_file:dir { write search setattr relabelto getattr add_name };
 allow installd terafonn_data_file:lnk_file create;
+
+allow installd hcfs_data_file:dir open;

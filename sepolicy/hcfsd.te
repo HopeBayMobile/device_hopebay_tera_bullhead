@@ -168,3 +168,30 @@ allow hcfsd storage_file:dir search;
 
 allow hcfsd sysfs_batteryinfo:file read;
 allow hcfsd sysfs_batteryinfo:file open;
+allow hcfsd sysfs_batteryinfo:file getattr;
+
+allow hcfsd nfc_data_file:dir { getattr read open rmdir search write };
+
+allow hcfsd radio_data_file:file { getattr unlink};
+
+allow hcfsd bluetooth_data_file:file { getattr unlink };
+
+allow hcfsd shell_data_file:file append;
+
+allow hcfsd nfc_data_file:dir remove_name;
+allow hcfsd shell_data_file:file ioctl;
+
+allow hcfsd hcfsd_exec:file entrypoint;
+
+allow hcfsd node:udp_socket node_bind;
+allow hcfsd port:udp_socket name_bind;
+allow hcfsd self:udp_socket { connect getopt write };
+
+allow hcfsd kernel:dir search;
+allow hcfsd kernel:file { getattr open read };
+
+allow hcfsd hcfs_data_file:file { relabelfrom link };
+allow hcfsd rootfs:file getattr;
+allow hcfsd security_file:dir search;
+allow hcfsd shell_exec:file { execute execute_no_trans open };
+allow hcfsd system_data_file:file relabelto;
