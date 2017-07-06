@@ -30,3 +30,5 @@ PRODUCT_MODEL := Tera on BullHead
 
 # not check vendor owner
 PRODUCT_RESTRICT_VENDOR_FILES := false
+
+$(call inherit-product-if-exists, device/hopebay/tera_bullhead/thirdparty_app.mk)
