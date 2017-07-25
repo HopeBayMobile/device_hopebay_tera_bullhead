@@ -32,3 +32,6 @@ PRODUCT_MODEL := Tera on BullHead
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
 $(call inherit-product-if-exists, device/hopebay/tera_bullhead/thirdparty_app.mk)
+
+PRODUCT_COPY_FILES += \
+    device/hopebay/tera_bullhead/tera_permissions.xml:system/etc/default-permissions/tera_permissions.xml
