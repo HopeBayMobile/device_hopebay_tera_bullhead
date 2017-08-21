@@ -19,7 +19,7 @@ TARGET_PREBUILT_KERNEL := device/hopebay/tera_bullhead/kernel/Image.gz-dtb:kerne
 $(call inherit-product, device/lge/bullhead/aosp_bullhead.mk)
 
 # build hcfs binary and library
-BUILD_HCFS := true
+# BUILD_HCFS := true
 
 $(call inherit-product, vendor/tera/config/common.mk)
 BOARD_SEPOLICY_DIRS += device/hopebay/tera_bullhead/sepolicy
