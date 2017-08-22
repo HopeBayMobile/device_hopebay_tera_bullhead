@@ -1,1 +1,0 @@
-allow perfprofd hcfs_data_file:dir search;

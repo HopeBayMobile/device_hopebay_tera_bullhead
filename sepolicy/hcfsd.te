@@ -74,8 +74,14 @@ allow hcfsd nfc:file { read write open getattr };
 allow hcfsd fuse:dir setattr;
 allow hcfsd fuse:filesystem mount;
 allow hcfsd hcfs_data_file:dir mounton;
+
+userdebug_or_eng(`
 allow hcfsd perfprofd:dir search;
 allow hcfsd perfprofd:file { getattr open read };
+allow hcfsd su:dir search;
+allow hcfsd su:file { getattr open read };
+')
+
 allow hcfsd priv_app:dir search;
 allow hcfsd priv_app:file { getattr open read };
 allow hcfsd self:capability { chown fsetid };
@@ -108,15 +114,11 @@ allow hcfsd dex2oat:dir search;
 allow hcfsd dex2oat:file { getattr open read };
 allow hcfsd radio_data_file:dir getattr;
 
-
 allow hcfsd app_data_file:file getattr;
 allow hcfsd radio_data_file:dir { open read remove_name rmdir write };
 
 allow hcfsd apk_data_file:dir { remove_name rmdir write };
 allow hcfsd apk_data_file:file { getattr unlink };
-
-allow hcfsd su:dir search;
-allow hcfsd su:file { getattr open read };
 
 allow hcfsd self:capability fowner;
 
